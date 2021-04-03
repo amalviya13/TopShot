@@ -1,14 +1,10 @@
 function getPrice(phone_number) {
-    console.log(phone_number)
-    var currentPrice = document.getElementsByClassName("SinglePriceLarge__PriceRow-ijh2t7-0 dESKpj")[0].getElementsByTagName('span')[0].innerHTML;
-    console.log(currentPrice)
-    console.log(phone_number)
-    var price = "";
+    var currentNumber = document.getElementById("MainPart_lbUsersInLineAheadOfYou").innerText;
+    console.log(currentNumber)
+    console.log("hi")
     const req = new XMLHttpRequest();
     const baseUrl = "http://localhost:8080/text";
-
-    var bodyVal = "{\"phone_number\" : \"" + phone_number + "\"}"
-
+    var bodyVal = "{\"phone_number\" : \"" + phone_number + "\",\"" + currentNumber + "\": \"currentNumber\"}"
     var myHeaders = new Headers();
     myHeaders.append('Content-Type', 'application/json');
     

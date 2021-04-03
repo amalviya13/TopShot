@@ -8,13 +8,18 @@
     "activeTab",
     "tabs", 
     "storage",
-    "https://nbatopshot.com/*"
+    "https://nbatopshot.com/*",
+    "http://localhost/*"
   ],
 
   "content_scripts": [{
     "js": ["contentscript.js"],
-    "matches": [ "https://nbatopshot.com/*"]
+    "matches": [ "https://nbatopshot.com/*", "http://localhost/*"]
   }],
+
+  "background" : {
+    "scripts" : ["backgroundscript.js"]
+  },
 
   "browser_action": {
     "default_icon": "icon.png",
