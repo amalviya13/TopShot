@@ -1,13 +1,40 @@
 <!DOCTYPE html>
 <html>
+    <span>My NBA Top Show Now</span>
+    <br>
+    <br>
     <script src="popup.js"></script>
     <div id="startupDiv" style="padding: 20px 20px 20px 20px;">           
-        <h3>Hello,</h3>
-        <p>Please enter your phone number to sign up: </p>         
-        <input id="phone_number" />                   
-        <button id="start" type="button">START</button>
+        <span>Please enter your phone number to sign up:</span>       
+        <input id="phone_number" />      
+        <button id="sign_up" type="button">SIGN UP</button>             
     </div> 
+    <br>
     <div id="secondDiv">
-        <h3>Thanks for signing up</h3>
+        <div>
+            <span id="currentNumberSignedUp"></span> 
+        </div>
+        <br>
+        <div>
+            <span>Please pick by what increments you would like to be notified</span>
+            <select name="increments" id="increments">
+                <option value="1000">1000</option>
+                <option value="5000">5000</option>
+                <option value="10000">10000</option>
+                <option value="15000">15000</option>
+              </select>
+        </div>
+        <br>
+        <span>To change the number enter a new number and click save</span>
+        <input id="phone_number_change" />        
+        <button id="save" type="button">SAVE</button>             
+        <button id="start" type="button">START</button> 
+        <br>
+        <br>
+        <span class="noclick">Feel free to share My NBA Top Show Now on Twitter!</span>
+        <a target="_blank" href="https://ctt.ac/re7ka">
+            <img src="http://clicktotweet.com/img/tweet-graphic-2.png" alt="Tweet: Check out this chrome extension for NBA Top Shot
+            https://www.blogtyrant.com/click-to-tweet-this-quote-blog-posts/" />
+        </a>
     </div>
 </html> 
