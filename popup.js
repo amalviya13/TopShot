@@ -1,51 +1,60 @@
 chrome.storage.sync.get('phone_number', function(data) {
     if (typeof data.phone_number === 'undefined') {
         document.getElementById("secondDiv").style.display = "none";
-        document.getElementById("verificationDiv").style.display = "none";
+        document.getElementById("thirdDiv").style.display = "none";
     } else {
-        document.getElementById("startupDiv").style.display = "none";
-        document.getElementById("verificationDiv").style.display = "none";
-        document.getElementById("currentNumberSignedUp").innerText = "This is the current number you will be notified at: " + data.phone_number 
+        document.getElementById("firstDiv").style.display = "none";
+        document.getElementById("secondDiv").style.display = "none";
+        document.getElementById("phone_number_3").value = data.phone_number;
     }
 });
 
-var currentNumber = 1000000;
+var currentNumber = 10000000;
 var prevNumber = currentNumber;
 var lastUpdated = "5pm";
 var randomNumber = 0;
+
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('start').addEventListener('click', startScripts);
     document.getElementById('sign_up').addEventListener('click', verifySignUp);
     document.getElementById('save').addEventListener('click', saveNewNumber);
     document.getElementById('send_verification').addEventListener('click', sendVerification);
-    document.getElementById('send_verification_again').addEventListener('click', sendVerification);
+    document.getElementById('changeNumber').addEventListener('click', firstPage);
+    document.getElementById('resend_code').addEventListener('click', sendVerification);
 });
 
+function firstPage() {
+    document.getElementById("secondDiv").style.display = "none";
+    document.getElementById("thirdDiv").style.display = "none";
+    document.getElementById("firstDiv").style.display = "block";
+
+}
+
 function verifySignUp() {
-    //see if the value sent in 
     var enteredCode = document.getElementById("verification_number").value;
     var phoneNumber = phone_number=document.getElementById("phone_number").value;
     if (enteredCode == randomNumber) {
         chrome.storage.sync.set({"phone_number": phoneNumber}, function() {
             location.reload();
         });
-        document.getElementById("startupDiv").style.display = "none";
-        document.getElementById("verificationDiv").style.display = "none";
+        document.getElementById("firstDiv").style.display = "none";
     }
 }
 
 function sendVerification() {
     phone_number=document.getElementById("phone_number").value;
+    document.getElementById("phone_number_2").value = phone_number;
+    document.getElementById("secondDiv").style.display = "block";
+    document.getElementById("firstDiv").style.display = "none";
+    document.getElementById("thirdDiv").style.display = "none";
     if (phone_number.length == 10) {
-        document.getElementById("verificationDiv").style.display = "block";
         randomNumber = Math.floor(100000 + Math.random() * 900000);
-        //send message to number with random number
         var bodyVal = "{\"phone_number\" : \"" + phone_number + "\",\"code\" : \"" + randomNumber + "\"}"
         const req = new XMLHttpRequest();
-        const baseUrl = "http://localhost:8080/verify";
+        const baseUrl = "app.mytopshotnow.com/verify";
         var myHeaders = new Headers();
         myHeaders.append('Content-Type', 'application/json');
-        fetch("http://localhost:8080/verify", {
+        fetch("https://app.mytopshotnow.com/verify", {
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache',
@@ -81,13 +90,16 @@ function sendSMS(phone_number) {
             });
         });
         var increase = parseInt(document.getElementById("increments").value);
+        console.log(prevNumber);
+        console.log(currentNumber);
+        console.log(increase);
         if (prevNumber - currentNumber > increase) {
             var bodyVal = "{\"phone_number\" : \"" + phone_number + "\",\"numberInLine\" : \"" + currentNumber + "\", \"lastUpdated\" : \"" + lastUpdated + "\"}"
             const req = new XMLHttpRequest();
-            const baseUrl = "http://localhost:8080/text";
+            const baseUrl = "app.mytopshotnow.com/text";
             var myHeaders = new Headers();
             myHeaders.append('Content-Type', 'application/json');
-            fetch("http://localhost:8080/text", {
+            fetch("https://app.mytopshotnow.com/text", {
                 method: 'POST',
                 mode: 'cors',
                 cache: 'no-cache',
@@ -103,6 +115,7 @@ function sendSMS(phone_number) {
 }
 
 function startScripts() {
+    
     chrome.storage.sync.get('phone_number', function(data) {
         if (typeof data.phone_number === 'undefined') {
             var phone_number=document.getElementById("phone_number").value;

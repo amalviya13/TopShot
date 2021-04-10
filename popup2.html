@@ -1,0 +1,323 @@
+<html>
+
+<style>
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    width: 350px;
+    height:10px;
+    font-family: 'Open Sans',sans-serif !important;
+    font-size: 13px;
+    line-height: 20px;
+    color: #838086;
+    background: #fff;
+	margin: 0px;
+}
+
+label {
+	font-size: 14px;
+	font-weight: 400;
+    color: #000;
+}
+
+.modal-header {
+    padding: 20px;
+    border-bottom: 1px solid #e5e5e5;
+    min-height: 16.42857143px;
+}
+
+.modal-title {
+    font-family: 'Open Sans',sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #333;
+    background: #fff!important;
+    margin: 0;
+    line-height: 1.42857143;
+}
+
+.button.close {
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    -webkit-appearance: none;
+}
+.close {
+    float: right;
+    font-size: 21px;
+    font-weight: bold;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .2;
+    filter: alpha(opacity=20);
+}
+
+.modal-body {
+	position:relative;
+	padding:20px;
+	float: left;
+    width: 100%;
+}
+
+.input-column-left {
+    width: 54%;
+}
+
+.form-input-column {
+    float: left;
+}
+
+.label {
+    display: inline-block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.input-column-left {
+    width: 100%;
+}
+.input-column-right {
+    width: 46%;
+    padding-left: 12px;
+}
+.form-input-column {
+    float: left;
+}
+
+.form-control:focus {
+	border-color:#66afe9;
+	outline:0;
+	-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+	box-shadow:inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6)
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: 36px;
+    padding: 6px 12px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+    box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+    -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+}
+
+.modal-footer .btn+.btn {
+    margin-left: 5px;
+    margin-bottom: 0;
+}
+
+.btn:active, .btn.active {
+    outline: 0;
+    background-image: none;
+    -webkit-box-shadow: inset 0 0 0;
+    box-shadow: inset 0 0 0;
+}
+
+.btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary {
+    background-image: none;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary {
+    color: #fff;
+    background-color: #3276b1;
+    border-color: #285e8e;
+}
+
+.btn {
+    height: 30px;
+    font-size: 13px;
+    border-radius: 2px;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #428bca;
+    border-color: #357ebd;
+}
+
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: .42857143;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.btn-default {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
+
+.input, button, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.button, html input[type="button"], input[type="reset"], input[type="submit"] {
+    -webkit-appearance: button;
+    cursor: pointer;
+}
+
+.button, select {
+    text-transform: none;
+}
+
+.button {
+    overflow: visible;
+}
+
+.button, input, optgroup, select, textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+}
+
+.modal-footer {
+    text-align: left;
+	border-top: 1px solid #e5e5e5;
+	float: left;
+    width: 100%;
+	padding: 20px 20px 20px 20px;
+}
+
+.form-group.form-input-row label, .form-group.form-input-row input[type="checkbox"] {
+    float: left;
+	margin-bottom: 3px;
+}
+
+.form-group {
+    margin-bottom: 10px;
+	float: left;
+    width: 100%;
+}
+
+.select-wrap {
+    width: 100%;
+    float: left;
+}
+
+.button, select {
+    text-transform: none;
+}
+
+input:focus {
+	outline:0px none !important;
+}
+
+
+</style>
+
+<body>
+<script src="popup.js"></script>
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+	<h4 class="modal-title">NBA Top Shot Extension</h4>
+</div>
+<div class="modal-body clearfix adhoc-task" id="firstDiv">
+	<div class="form-group form-input-row dialog-pushout-error-message" style="display:none"></div>
+	<div class="form-group form-input-row">
+		<div class="form-input-column input-column-left">
+			<label>Register for your turn in NBA Top shot</label>
+		</div>
+		<div class="form-input-column input-column-right">
+		</div>
+	</div>
+	<div class="form-group form-input-row">
+		<div class="form-input-column input-column-left">
+			<label class="required">Enter Phone Number</label>
+			<input class="form-control text-field add-comment-input" type="text" id="phone_number" autocomplete="off" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAkCAYAAADo6zjiAAAAAXNSR0IArs4c6QAAA11JREFUWAndVzlLY1EU/pKJioiiiYoxgoIguMQoUyg2CTbBTrCcUvAHWFgJNlbzM6wGQQQLO3VEEEtTuRSKiMaFxA0R18z57uRd5r3szxeEOZDce8/63XOX864LQvPz84G3t7ef0o2kUqlW8pwil8t1Lr5+ezyemdnZ2TOrX1c6eEwC+6xCJ8cCJCEgQlYQbs683ME5EcZIZ9k0L7eMIiZOeQcZsdxOr3k+/NliMQNfSv83gO7ubkxPT4NtLiprBnp7e1FXVwe2uaisAOTsq7hGmw1EWQFkC2jlmQBUVVWhs7MTDQ0NVj3YlWU4sjA8xri+vh6Tk5Oora3Fx8cHVlZWsLu7q8R2ZYbvfK3OwPDwsApOZbfbjdHRUW1nV6Yd5OloAHl0yirSAHZ2dvDw8KCCcQnW19d1YLsy7SBPxzU3N5cy5NxobW1tSCaTuLm5MdiqzSczKRYYyJGMi8pm+vvg1ASggK2jYgGSFBADegkc9V6EM6mMXn4ffBmANMawvgeKAJ2hEgwGMTIyAp/Ph7u7O+zv72NjY0PdIxnKWRiSBb9tAAw+MTGh3TY1NYE/gllcXNR8dhobG1FZWYnLy0u8v7+bZLaXgDMnvb6+Ynl5GUdHR2rc09OD1lbzh/X4+DimpqZQU1OjdP79sw2AMyXF43HEYjFsbW1pv+3t7bpfqOOR43Ce7VutkOHT05NKK9POgH19fdqEtaOjowOhUEjxjOIWjUbx8vKC6+trbG9vK9m3SCTyXXpBbV1kx+v1IhAIoKKiAoODg2hpaeGnN1j7j4+PVT0Jh8Pw+/0KKN02NzerMXWYNZLcBZ4ZOY9RMf6bU8Uu/Le2tobq6mp0dXWpXc/rWiajDG9vb3F4eIiFhQU1HhsbUxt0aWkJj4+PYPYM8vClIq+jUPrRUPTT7Pn5GXRIYvVkEM6MdHFxoeqKUVuoSzo5OcH9/b3qG3/qGKafSz8MZr7WqB1M/9DQEFOodj3XnXRwcICzM/MTMJFIKD0WOSvZvgd4pPr7+03+9vb2sLq6auJxwGOai2wD4Kx49HixsHJeXV2pI5krUC7+pwBwI36WSr6IZKOxnjtC9FUyAIm86Uj0v042SwbAe0OQJz8Lgj7oq2QAcmRPxXBAHPxiCksFQhva0gd9/QFliFiu8Gk7TgAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;">
+		</div>
+		<div class="form-input-column input-column-right">
+		</div>
+	</div>
+    <div>
+        <button class="btn btn-default" id="send_verification" type="button">Send Verification Code</button>
+    </div>
+</div>
+<div class="modal-body clearfix adhoc-task" id="secondDiv">
+    <div class="form-input-column input-column-left">
+        <label class="required">Entered Phone Number</label>
+        <input class="form-control text-field add-comment-input" type="text" id="phone_number_2" autocomplete="off" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAkCAYAAADo6zjiAAAAAXNSR0IArs4c6QAAA11JREFUWAndVzlLY1EU/pKJioiiiYoxgoIguMQoUyg2CTbBTrCcUvAHWFgJNlbzM6wGQQQLO3VEEEtTuRSKiMaFxA0R18z57uRd5r3szxeEOZDce8/63XOX864LQvPz84G3t7ef0o2kUqlW8pwil8t1Lr5+ezyemdnZ2TOrX1c6eEwC+6xCJ8cCJCEgQlYQbs683ME5EcZIZ9k0L7eMIiZOeQcZsdxOr3k+/NliMQNfSv83gO7ubkxPT4NtLiprBnp7e1FXVwe2uaisAOTsq7hGmw1EWQFkC2jlmQBUVVWhs7MTDQ0NVj3YlWU4sjA8xri+vh6Tk5Oora3Fx8cHVlZWsLu7q8R2ZYbvfK3OwPDwsApOZbfbjdHRUW1nV6Yd5OloAHl0yirSAHZ2dvDw8KCCcQnW19d1YLsy7SBPxzU3N5cy5NxobW1tSCaTuLm5MdiqzSczKRYYyJGMi8pm+vvg1ASggK2jYgGSFBADegkc9V6EM6mMXn4ffBmANMawvgeKAJ2hEgwGMTIyAp/Ph7u7O+zv72NjY0PdIxnKWRiSBb9tAAw+MTGh3TY1NYE/gllcXNR8dhobG1FZWYnLy0u8v7+bZLaXgDMnvb6+Ynl5GUdHR2rc09OD1lbzh/X4+DimpqZQU1OjdP79sw2AMyXF43HEYjFsbW1pv+3t7bpfqOOR43Ce7VutkOHT05NKK9POgH19fdqEtaOjowOhUEjxjOIWjUbx8vKC6+trbG9vK9m3SCTyXXpBbV1kx+v1IhAIoKKiAoODg2hpaeGnN1j7j4+PVT0Jh8Pw+/0KKN02NzerMXWYNZLcBZ4ZOY9RMf6bU8Uu/Le2tobq6mp0dXWpXc/rWiajDG9vb3F4eIiFhQU1HhsbUxt0aWkJj4+PYPYM8vClIq+jUPrRUPTT7Pn5GXRIYvVkEM6MdHFxoeqKUVuoSzo5OcH9/b3qG3/qGKafSz8MZr7WqB1M/9DQEFOodj3XnXRwcICzM/MTMJFIKD0WOSvZvgd4pPr7+03+9vb2sLq6auJxwGOai2wD4Kx49HixsHJeXV2pI5krUC7+pwBwI36WSr6IZKOxnjtC9FUyAIm86Uj0v042SwbAe0OQJz8Lgj7oq2QAcmRPxXBAHPxiCksFQhva0gd9/QFliFiu8Gk7TgAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" readonly>
+    </div>
+    <br>
+	<div class="form-group form-input-row">
+		<div class="form-input-column input-column-left">
+			<label class="required">Verification Code</label>
+			<input class="form-control text-field add-comment-input" type="text" id="verification_number" autocomplete="off" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAkCAYAAADo6zjiAAAAAXNSR0IArs4c6QAAA11JREFUWAndVzlLY1EU/pKJioiiiYoxgoIguMQoUyg2CTbBTrCcUvAHWFgJNlbzM6wGQQQLO3VEEEtTuRSKiMaFxA0R18z57uRd5r3szxeEOZDce8/63XOX864LQvPz84G3t7ef0o2kUqlW8pwil8t1Lr5+ezyemdnZ2TOrX1c6eEwC+6xCJ8cCJCEgQlYQbs683ME5EcZIZ9k0L7eMIiZOeQcZsdxOr3k+/NliMQNfSv83gO7ubkxPT4NtLiprBnp7e1FXVwe2uaisAOTsq7hGmw1EWQFkC2jlmQBUVVWhs7MTDQ0NVj3YlWU4sjA8xri+vh6Tk5Oora3Fx8cHVlZWsLu7q8R2ZYbvfK3OwPDwsApOZbfbjdHRUW1nV6Yd5OloAHl0yirSAHZ2dvDw8KCCcQnW19d1YLsy7SBPxzU3N5cy5NxobW1tSCaTuLm5MdiqzSczKRYYyJGMi8pm+vvg1ASggK2jYgGSFBADegkc9V6EM6mMXn4ffBmANMawvgeKAJ2hEgwGMTIyAp/Ph7u7O+zv72NjY0PdIxnKWRiSBb9tAAw+MTGh3TY1NYE/gllcXNR8dhobG1FZWYnLy0u8v7+bZLaXgDMnvb6+Ynl5GUdHR2rc09OD1lbzh/X4+DimpqZQU1OjdP79sw2AMyXF43HEYjFsbW1pv+3t7bpfqOOR43Ce7VutkOHT05NKK9POgH19fdqEtaOjowOhUEjxjOIWjUbx8vKC6+trbG9vK9m3SCTyXXpBbV1kx+v1IhAIoKKiAoODg2hpaeGnN1j7j4+PVT0Jh8Pw+/0KKN02NzerMXWYNZLcBZ4ZOY9RMf6bU8Uu/Le2tobq6mp0dXWpXc/rWiajDG9vb3F4eIiFhQU1HhsbUxt0aWkJj4+PYPYM8vClIq+jUPrRUPTT7Pn5GXRIYvVkEM6MdHFxoeqKUVuoSzo5OcH9/b3qG3/qGKafSz8MZr7WqB1M/9DQEFOodj3XnXRwcICzM/MTMJFIKD0WOSvZvgd4pPr7+03+9vb2sLq6auJxwGOai2wD4Kx49HixsHJeXV2pI5krUC7+pwBwI36WSr6IZKOxnjtC9FUyAIm86Uj0v042SwbAe0OQJz8Lgj7oq2QAcmRPxXBAHPxiCksFQhva0gd9/QFliFiu8Gk7TgAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;">
+            <br>
+            <button id="sign_up" class="btn btn-default" type="button">Verify Phone</button>
+            <button id="resend_code" class="btn btn-default" type="button">Resend Code</button>
+        </div>
+		<div class="form-input-column input-column-right">
+		</div>
+	</div>
+</div>
+<div class="modal-body clearfix adhoc-task" id="thirdDiv">
+    <div class="form-input-column input-column-left">
+        <label class="required">Current Phone Number</label>
+        <input class="form-control text-field add-comment-input" type="text" id="phone_number_3" autocomplete="off" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAkCAYAAADo6zjiAAAAAXNSR0IArs4c6QAAA11JREFUWAndVzlLY1EU/pKJioiiiYoxgoIguMQoUyg2CTbBTrCcUvAHWFgJNlbzM6wGQQQLO3VEEEtTuRSKiMaFxA0R18z57uRd5r3szxeEOZDce8/63XOX864LQvPz84G3t7ef0o2kUqlW8pwil8t1Lr5+ezyemdnZ2TOrX1c6eEwC+6xCJ8cCJCEgQlYQbs683ME5EcZIZ9k0L7eMIiZOeQcZsdxOr3k+/NliMQNfSv83gO7ubkxPT4NtLiprBnp7e1FXVwe2uaisAOTsq7hGmw1EWQFkC2jlmQBUVVWhs7MTDQ0NVj3YlWU4sjA8xri+vh6Tk5Oora3Fx8cHVlZWsLu7q8R2ZYbvfK3OwPDwsApOZbfbjdHRUW1nV6Yd5OloAHl0yirSAHZ2dvDw8KCCcQnW19d1YLsy7SBPxzU3N5cy5NxobW1tSCaTuLm5MdiqzSczKRYYyJGMi8pm+vvg1ASggK2jYgGSFBADegkc9V6EM6mMXn4ffBmANMawvgeKAJ2hEgwGMTIyAp/Ph7u7O+zv72NjY0PdIxnKWRiSBb9tAAw+MTGh3TY1NYE/gllcXNR8dhobG1FZWYnLy0u8v7+bZLaXgDMnvb6+Ynl5GUdHR2rc09OD1lbzh/X4+DimpqZQU1OjdP79sw2AMyXF43HEYjFsbW1pv+3t7bpfqOOR43Ce7VutkOHT05NKK9POgH19fdqEtaOjowOhUEjxjOIWjUbx8vKC6+trbG9vK9m3SCTyXXpBbV1kx+v1IhAIoKKiAoODg2hpaeGnN1j7j4+PVT0Jh8Pw+/0KKN02NzerMXWYNZLcBZ4ZOY9RMf6bU8Uu/Le2tobq6mp0dXWpXc/rWiajDG9vb3F4eIiFhQU1HhsbUxt0aWkJj4+PYPYM8vClIq+jUPrRUPTT7Pn5GXRIYvVkEM6MdHFxoeqKUVuoSzo5OcH9/b3qG3/qGKafSz8MZr7WqB1M/9DQEFOodj3XnXRwcICzM/MTMJFIKD0WOSvZvgd4pPr7+03+9vb2sLq6auJxwGOai2wD4Kx49HixsHJeXV2pI5krUC7+pwBwI36WSr6IZKOxnjtC9FUyAIm86Uj0v042SwbAe0OQJz8Lgj7oq2QAcmRPxXBAHPxiCksFQhva0gd9/QFliFiu8Gk7TgAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" readonly>
+        <button id="changeNumber" class="btn btn-default" type="button">Change Number</button>
+    </div>
+	<div class="form-group form-input-row">
+		<div class="form-input-column input-column-left">
+			<label class="">Monitoring Frequency</label><div class="select-wrap">
+				<select class="select-box form-control priority-select" id="increments" >
+					<option value="0">&nbsp;</option>
+					<option value="1">Every 5000</option>
+					<option value="2">Every 10000</option>
+					<option value="3">When it's my turn</option>
+				</select>
+			</div>
+		</div>
+		<div class="form-input-column input-column-right">
+		</div>
+	</div>
+
+    <br>
+
+    <div class="form-input-column">
+        <button type="button" class="btn btn-primary" id="start">Start Monitoring</button>
+        <button type="button" class="btn btn-primary" id="stop">Stop Monitoring</button>
+    </div>
+</div>
+
+
+</div>
+<!-- /.modal-content --></div>
+
+
+</body>
+
+</html>

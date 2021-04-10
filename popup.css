@@ -1,4 +1,21 @@
 body{
-    width: 350px;
-    height:350px;
+    width: 450px;
+    height:100px;
+    background-color: lightblue;
+    font-family: CustomFont !important;
+}
+
+p {
+    font-family: CustomFont !important;
+}
+
+@font-face {
+    font-family: 'CustomFont';
+    font-style: normal;
+    font-weight: 700;
+    src: url('chrome-extension://__MSG_@@extension_id__/fonts/Roboto-Regular.ttf'); 
+}
+
+.title {
+    font-size:20px;
 }

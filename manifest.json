@@ -9,13 +9,20 @@
     "tabs", 
     "storage",
     "https://nbatopshot.com/*",
-    "http://localhost/*"
+    "http://localhost/*", 
+    "https://app.mytopshotnow.com/*"
   ],
 
   "content_scripts": [{
     "js": ["contentscript.js"],
-    "matches": [ "https://nbatopshot.com/*", "http://localhost/*"]
+    "matches": [ "https://nbatopshot.com/*", "http://localhost/*", "https://app.mytopshotnow.com/*"]
   }],
+
+  "externally_connectable": {
+    "ids": ["aamhchikelhchdeoldhlnladonpgccmp"],
+    "matches": ["https://app.mytopshotnow.com/*"],
+    "accepts_tls_channel_id": false
+  },
 
   "background" : {
     "scripts" : ["backgroundscript.js"]
@@ -23,7 +30,13 @@
 
   "browser_action": {
     "default_icon": "icon.png",
-    "default_popup": "popup.html"
-  }
+    "default_popup": "popup2.html"
+  },
+
+  "web_accessible_resources": [
+    "styles/contentscript.css",
+    "fonts/Roboto-Regular.ttf",
+    "*.png", "*.ttf"
+    ]
   
 }
