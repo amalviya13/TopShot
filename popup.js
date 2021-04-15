@@ -2,6 +2,9 @@ chrome.storage.sync.get('phone_number', function(data) {
     if (typeof data.phone_number === 'undefined') {
         document.getElementById("secondDiv").style.display = "none";
         document.getElementById("thirdDiv").style.display = "none";
+        document.getElementById("invalidPhoneNumber").style.display = "none";
+        document.getElementById("invalidCode").style.display = "none";
+        document.getElementById("cancel_number").style.display = "none";
     } else {
         document.getElementById("firstDiv").style.display = "none";
         document.getElementById("secondDiv").style.display = "none";
@@ -9,22 +12,65 @@ chrome.storage.sync.get('phone_number', function(data) {
     }
 });
 
+chrome.storage.sync.get('monitor', function(data) {
+    console.log(data.monitor);
+    if (typeof data.monitor === 'true') {
+        document.getElementById("stop").style.display = "block";
+        document.getElementById("start").style.display = "none";
+    }
+    else {
+        document.getElementById("stop").style.display = "none";
+        document.getElementById("start").style.display = "block";
+    }
+});
+
+
+chrome.storage.sync.set({"increment": 200}, function() {
+});
+
 var currentNumber = 10000000;
 var prevNumber = currentNumber;
 var lastUpdated = "5pm";
 var randomNumber = 0;
+var running = 0;
 
 document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('increments').addEventListener('change', logValue, false);
     document.getElementById('start').addEventListener('click', startScripts);
     document.getElementById('sign_up').addEventListener('click', verifySignUp);
-    document.getElementById('save').addEventListener('click', saveNewNumber);
     document.getElementById('send_verification').addEventListener('click', sendVerification);
     document.getElementById('changeNumber').addEventListener('click', firstPage);
-    document.getElementById('resend_code').addEventListener('click', sendVerification);
+    document.getElementById('resend_code').addEventListener('click', sendVerificationAgain);
+    document.getElementById('stop').addEventListener('click', stop);
+    document.getElementById('cancel_number').addEventListener('click', goThirdDiv);
 });
+
+function logValue() {
+    var value = document.getElementById('increments').value;
+    chrome.storage.sync.set({"increment": value}, function() {
+        console.log(value);
+    });
+}
+
+function goThirdDiv() {
+    document.getElementById("firstDiv").style.display = "none";
+    document.getElementById("secondDiv").style.display = "none";
+    document.getElementById("stop").style.display = "none";
+    document.getElementById("thirdDiv").style.display = "block";
+}
+
+function stop() {
+    var bgPage = chrome.extension.getBackgroundPage();
+    bgPage.stop();
+    running = 1;
+    document.getElementById("stop").style.display = "none";
+    document.getElementById("start").style.display = "block";
+    document.getElementById("numInLine").style.display = "none";
+}
 
 function firstPage() {
     document.getElementById("secondDiv").style.display = "none";
+    document.getElementById("invalidPhoneNumber").style.display = "none";
     document.getElementById("thirdDiv").style.display = "none";
     document.getElementById("firstDiv").style.display = "block";
 
@@ -32,24 +78,29 @@ function firstPage() {
 
 function verifySignUp() {
     var enteredCode = document.getElementById("verification_number").value;
-    var phoneNumber = phone_number=document.getElementById("phone_number").value;
+    var phoneNumber = phone_number=document.getElementById("phone_number_2").value;
     if (enteredCode == randomNumber) {
+        document.getElementById("invalidCode").style.display = "none";
         chrome.storage.sync.set({"phone_number": phoneNumber}, function() {
             location.reload();
         });
         document.getElementById("firstDiv").style.display = "none";
+    } else {
+        document.getElementById("invalidCode").style.display = "block";
     }
 }
 
 function sendVerification() {
-    phone_number=document.getElementById("phone_number").value;
-    document.getElementById("phone_number_2").value = phone_number;
-    document.getElementById("secondDiv").style.display = "block";
-    document.getElementById("firstDiv").style.display = "none";
-    document.getElementById("thirdDiv").style.display = "none";
+    var phone_number=document.getElementById("phone_number").value;
     if (phone_number.length == 10) {
+        document.getElementById("invalidCode").style.display = "none";
+        document.getElementById("invalidPhoneNumber").style.display = "none";
+        document.getElementById("phone_number_2").value = phone_number;
+        document.getElementById("secondDiv").style.display = "block";
+        document.getElementById("firstDiv").style.display = "none";
+        document.getElementById("thirdDiv").style.display = "none";
         randomNumber = Math.floor(100000 + Math.random() * 900000);
-        var bodyVal = "{\"phone_number\" : \"" + phone_number + "\",\"code\" : \"" + randomNumber + "\"}"
+        var bodyVal = "{\"phone_number\" : \"" + document.getElementById("phone_number_2").value + "\",\"code\" : \"" + randomNumber + "\"}"
         const req = new XMLHttpRequest();
         const baseUrl = "app.mytopshotnow.com/verify";
         var myHeaders = new Headers();
@@ -63,59 +114,45 @@ function sendVerification() {
         }).then(function(response) {
 
         });
+    } else {
+        document.getElementById("invalidPhoneNumber").style.display = "block";
     }
 }
 
-function saveNewNumber() {
-    var phone_number = "";
-    if ("none" == document.getElementById("secondDiv").style.display) {
-        phone_number=document.getElementById("phone_number").value;
-    }
-    else {
-        phone_number=document.getElementById("phone_number_change").value;
-    }
-    if (phone_number.length > 0) {
-        chrome.storage.sync.set({"phone_number": phone_number}, function() {
-            location.reload();
+function sendVerificationAgain() {
+    var phone_number=document.getElementById("phone_number_2").value;
+    if (phone_number.length == 10) {
+        document.getElementById("invalidCode").style.display = "none";
+        document.getElementById("invalidPhoneNumber").style.display = "none";
+        document.getElementById("phone_number_2").value = phone_number;
+        document.getElementById("secondDiv").style.display = "block";
+        document.getElementById("firstDiv").style.display = "none";
+        document.getElementById("thirdDiv").style.display = "none";
+        randomNumber = Math.floor(100000 + Math.random() * 900000);
+        var bodyVal = "{\"phone_number\" : \"" + document.getElementById("phone_number_2").value + "\",\"code\" : \"" + randomNumber + "\"}"
+        const req = new XMLHttpRequest();
+        const baseUrl = "app.mytopshotnow.com/verify";
+        var myHeaders = new Headers();
+        myHeaders.append('Content-Type', 'application/json');
+        fetch("https://app.mytopshotnow.com/verify", {
+            method: 'POST',
+            mode: 'cors',
+            cache: 'no-cache',
+            headers : myHeaders,
+            body: bodyVal
+        }).then(function(response) {
+
         });
+    } else {
+        document.getElementById("invalidPhoneNumber").style.display = "block";
     }
-}
-
-function sendSMS(phone_number) {
-    var inst = setInterval(function() {
-        chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-            chrome.tabs.sendMessage(tabs[0].id, {method: "getNumber"}, function(response) {
-                currentNumber = response.current;
-                lastUpdated = response.lastUp;
-            });
-        });
-        var increase = parseInt(document.getElementById("increments").value);
-        console.log(prevNumber);
-        console.log(currentNumber);
-        console.log(increase);
-        if (prevNumber - currentNumber > increase) {
-            var bodyVal = "{\"phone_number\" : \"" + phone_number + "\",\"numberInLine\" : \"" + currentNumber + "\", \"lastUpdated\" : \"" + lastUpdated + "\"}"
-            const req = new XMLHttpRequest();
-            const baseUrl = "app.mytopshotnow.com/text";
-            var myHeaders = new Headers();
-            myHeaders.append('Content-Type', 'application/json');
-            fetch("https://app.mytopshotnow.com/text", {
-                method: 'POST',
-                mode: 'cors',
-                cache: 'no-cache',
-                headers : myHeaders,
-                body: bodyVal
-            }).then(function(response) {
-
-            });
-        prevNumber = currentNumber;
-        }
-
-    }, 5000);
 }
 
 function startScripts() {
-    
+
+    var bgPage = chrome.extension.getBackgroundPage();
+
+    running = 0;
     chrome.storage.sync.get('phone_number', function(data) {
         if (typeof data.phone_number === 'undefined') {
             var phone_number=document.getElementById("phone_number").value;
@@ -125,7 +162,11 @@ function startScripts() {
                 });
             }
         } else {
-            sendSMS(data.phone_number)
+            chrome.storage.sync.set({"monitor": 'true'}, function() {
+            });
+            document.getElementById("start").style.display = "none";
+            document.getElementById("stop").style.display = "block";
+            bgPage.sendSMS(data.phone_number);
         }
     });
 }

@@ -152,6 +152,18 @@ label {
     border-color: #357ebd;
 }
 
+.btn-primary-red {
+    color: #fff;
+    background-color: red;
+    border-color: #357ebd;
+}
+
+.btn-primary-green {
+    color: #fff;
+    background-color: limegreen;
+    border-color: #357ebd;
+}
+
 .btn {
     display: inline-block;
     margin-bottom: 0;
@@ -262,20 +274,27 @@ input:focus {
 		<div class="form-input-column input-column-right">
 		</div>
 	</div>
+    <div class="form-input-column input-column-left" id="invalidPhoneNumber">
+        <label>Your number is an invalid 10 digit phone number</label>
+    </div>
     <div>
         <button class="btn btn-default" id="send_verification" type="button">Send Verification Code</button>
+        <button class="btn btn-default" id="cancel_number" type="button">Cancel</button>
     </div>
 </div>
 <div class="modal-body clearfix adhoc-task" id="secondDiv">
     <div class="form-input-column input-column-left">
         <label class="required">Entered Phone Number</label>
-        <input class="form-control text-field add-comment-input" type="text" id="phone_number_2" autocomplete="off" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAkCAYAAADo6zjiAAAAAXNSR0IArs4c6QAAA11JREFUWAndVzlLY1EU/pKJioiiiYoxgoIguMQoUyg2CTbBTrCcUvAHWFgJNlbzM6wGQQQLO3VEEEtTuRSKiMaFxA0R18z57uRd5r3szxeEOZDce8/63XOX864LQvPz84G3t7ef0o2kUqlW8pwil8t1Lr5+ezyemdnZ2TOrX1c6eEwC+6xCJ8cCJCEgQlYQbs683ME5EcZIZ9k0L7eMIiZOeQcZsdxOr3k+/NliMQNfSv83gO7ubkxPT4NtLiprBnp7e1FXVwe2uaisAOTsq7hGmw1EWQFkC2jlmQBUVVWhs7MTDQ0NVj3YlWU4sjA8xri+vh6Tk5Oora3Fx8cHVlZWsLu7q8R2ZYbvfK3OwPDwsApOZbfbjdHRUW1nV6Yd5OloAHl0yirSAHZ2dvDw8KCCcQnW19d1YLsy7SBPxzU3N5cy5NxobW1tSCaTuLm5MdiqzSczKRYYyJGMi8pm+vvg1ASggK2jYgGSFBADegkc9V6EM6mMXn4ffBmANMawvgeKAJ2hEgwGMTIyAp/Ph7u7O+zv72NjY0PdIxnKWRiSBb9tAAw+MTGh3TY1NYE/gllcXNR8dhobG1FZWYnLy0u8v7+bZLaXgDMnvb6+Ynl5GUdHR2rc09OD1lbzh/X4+DimpqZQU1OjdP79sw2AMyXF43HEYjFsbW1pv+3t7bpfqOOR43Ce7VutkOHT05NKK9POgH19fdqEtaOjowOhUEjxjOIWjUbx8vKC6+trbG9vK9m3SCTyXXpBbV1kx+v1IhAIoKKiAoODg2hpaeGnN1j7j4+PVT0Jh8Pw+/0KKN02NzerMXWYNZLcBZ4ZOY9RMf6bU8Uu/Le2tobq6mp0dXWpXc/rWiajDG9vb3F4eIiFhQU1HhsbUxt0aWkJj4+PYPYM8vClIq+jUPrRUPTT7Pn5GXRIYvVkEM6MdHFxoeqKUVuoSzo5OcH9/b3qG3/qGKafSz8MZr7WqB1M/9DQEFOodj3XnXRwcICzM/MTMJFIKD0WOSvZvgd4pPr7+03+9vb2sLq6auJxwGOai2wD4Kx49HixsHJeXV2pI5krUC7+pwBwI36WSr6IZKOxnjtC9FUyAIm86Uj0v042SwbAe0OQJz8Lgj7oq2QAcmRPxXBAHPxiCksFQhva0gd9/QFliFiu8Gk7TgAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" readonly>
+        <input class="form-control text-field add-comment-input" type="text" id="phone_number_2" autocomplete="off" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAkCAYAAADo6zjiAAAAAXNSR0IArs4c6QAAA11JREFUWAndVzlLY1EU/pKJioiiiYoxgoIguMQoUyg2CTbBTrCcUvAHWFgJNlbzM6wGQQQLO3VEEEtTuRSKiMaFxA0R18z57uRd5r3szxeEOZDce8/63XOX864LQvPz84G3t7ef0o2kUqlW8pwil8t1Lr5+ezyemdnZ2TOrX1c6eEwC+6xCJ8cCJCEgQlYQbs683ME5EcZIZ9k0L7eMIiZOeQcZsdxOr3k+/NliMQNfSv83gO7ubkxPT4NtLiprBnp7e1FXVwe2uaisAOTsq7hGmw1EWQFkC2jlmQBUVVWhs7MTDQ0NVj3YlWU4sjA8xri+vh6Tk5Oora3Fx8cHVlZWsLu7q8R2ZYbvfK3OwPDwsApOZbfbjdHRUW1nV6Yd5OloAHl0yirSAHZ2dvDw8KCCcQnW19d1YLsy7SBPxzU3N5cy5NxobW1tSCaTuLm5MdiqzSczKRYYyJGMi8pm+vvg1ASggK2jYgGSFBADegkc9V6EM6mMXn4ffBmANMawvgeKAJ2hEgwGMTIyAp/Ph7u7O+zv72NjY0PdIxnKWRiSBb9tAAw+MTGh3TY1NYE/gllcXNR8dhobG1FZWYnLy0u8v7+bZLaXgDMnvb6+Ynl5GUdHR2rc09OD1lbzh/X4+DimpqZQU1OjdP79sw2AMyXF43HEYjFsbW1pv+3t7bpfqOOR43Ce7VutkOHT05NKK9POgH19fdqEtaOjowOhUEjxjOIWjUbx8vKC6+trbG9vK9m3SCTyXXpBbV1kx+v1IhAIoKKiAoODg2hpaeGnN1j7j4+PVT0Jh8Pw+/0KKN02NzerMXWYNZLcBZ4ZOY9RMf6bU8Uu/Le2tobq6mp0dXWpXc/rWiajDG9vb3F4eIiFhQU1HhsbUxt0aWkJj4+PYPYM8vClIq+jUPrRUPTT7Pn5GXRIYvVkEM6MdHFxoeqKUVuoSzo5OcH9/b3qG3/qGKafSz8MZr7WqB1M/9DQEFOodj3XnXRwcICzM/MTMJFIKD0WOSvZvgd4pPr7+03+9vb2sLq6auJxwGOai2wD4Kx49HixsHJeXV2pI5krUC7+pwBwI36WSr6IZKOxnjtC9FUyAIm86Uj0v042SwbAe0OQJz8Lgj7oq2QAcmRPxXBAHPxiCksFQhva0gd9/QFliFiu8Gk7TgAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;">
     </div>
     <br>
 	<div class="form-group form-input-row">
 		<div class="form-input-column input-column-left">
 			<label class="required">Verification Code</label>
 			<input class="form-control text-field add-comment-input" type="text" id="verification_number" autocomplete="off" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAkCAYAAADo6zjiAAAAAXNSR0IArs4c6QAAA11JREFUWAndVzlLY1EU/pKJioiiiYoxgoIguMQoUyg2CTbBTrCcUvAHWFgJNlbzM6wGQQQLO3VEEEtTuRSKiMaFxA0R18z57uRd5r3szxeEOZDce8/63XOX864LQvPz84G3t7ef0o2kUqlW8pwil8t1Lr5+ezyemdnZ2TOrX1c6eEwC+6xCJ8cCJCEgQlYQbs683ME5EcZIZ9k0L7eMIiZOeQcZsdxOr3k+/NliMQNfSv83gO7ubkxPT4NtLiprBnp7e1FXVwe2uaisAOTsq7hGmw1EWQFkC2jlmQBUVVWhs7MTDQ0NVj3YlWU4sjA8xri+vh6Tk5Oora3Fx8cHVlZWsLu7q8R2ZYbvfK3OwPDwsApOZbfbjdHRUW1nV6Yd5OloAHl0yirSAHZ2dvDw8KCCcQnW19d1YLsy7SBPxzU3N5cy5NxobW1tSCaTuLm5MdiqzSczKRYYyJGMi8pm+vvg1ASggK2jYgGSFBADegkc9V6EM6mMXn4ffBmANMawvgeKAJ2hEgwGMTIyAp/Ph7u7O+zv72NjY0PdIxnKWRiSBb9tAAw+MTGh3TY1NYE/gllcXNR8dhobG1FZWYnLy0u8v7+bZLaXgDMnvb6+Ynl5GUdHR2rc09OD1lbzh/X4+DimpqZQU1OjdP79sw2AMyXF43HEYjFsbW1pv+3t7bpfqOOR43Ce7VutkOHT05NKK9POgH19fdqEtaOjowOhUEjxjOIWjUbx8vKC6+trbG9vK9m3SCTyXXpBbV1kx+v1IhAIoKKiAoODg2hpaeGnN1j7j4+PVT0Jh8Pw+/0KKN02NzerMXWYNZLcBZ4ZOY9RMf6bU8Uu/Le2tobq6mp0dXWpXc/rWiajDG9vb3F4eIiFhQU1HhsbUxt0aWkJj4+PYPYM8vClIq+jUPrRUPTT7Pn5GXRIYvVkEM6MdHFxoeqKUVuoSzo5OcH9/b3qG3/qGKafSz8MZr7WqB1M/9DQEFOodj3XnXRwcICzM/MTMJFIKD0WOSvZvgd4pPr7+03+9vb2sLq6auJxwGOai2wD4Kx49HixsHJeXV2pI5krUC7+pwBwI36WSr6IZKOxnjtC9FUyAIm86Uj0v042SwbAe0OQJz8Lgj7oq2QAcmRPxXBAHPxiCksFQhva0gd9/QFliFiu8Gk7TgAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;">
+            <div class="form-input-column input-column-left" id="invalidCode">
+                <label>The code you entered is invalid</label>
+            </div>
             <br>
             <button id="sign_up" class="btn btn-default" type="button">Verify Phone</button>
             <button id="resend_code" class="btn btn-default" type="button">Resend Code</button>
@@ -287,16 +306,16 @@ input:focus {
 <div class="modal-body clearfix adhoc-task" id="thirdDiv">
     <div class="form-input-column input-column-left">
         <label class="required">Current Phone Number</label>
-        <input class="form-control text-field add-comment-input" type="text" id="phone_number_3" autocomplete="off" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAkCAYAAADo6zjiAAAAAXNSR0IArs4c6QAAA11JREFUWAndVzlLY1EU/pKJioiiiYoxgoIguMQoUyg2CTbBTrCcUvAHWFgJNlbzM6wGQQQLO3VEEEtTuRSKiMaFxA0R18z57uRd5r3szxeEOZDce8/63XOX864LQvPz84G3t7ef0o2kUqlW8pwil8t1Lr5+ezyemdnZ2TOrX1c6eEwC+6xCJ8cCJCEgQlYQbs683ME5EcZIZ9k0L7eMIiZOeQcZsdxOr3k+/NliMQNfSv83gO7ubkxPT4NtLiprBnp7e1FXVwe2uaisAOTsq7hGmw1EWQFkC2jlmQBUVVWhs7MTDQ0NVj3YlWU4sjA8xri+vh6Tk5Oora3Fx8cHVlZWsLu7q8R2ZYbvfK3OwPDwsApOZbfbjdHRUW1nV6Yd5OloAHl0yirSAHZ2dvDw8KCCcQnW19d1YLsy7SBPxzU3N5cy5NxobW1tSCaTuLm5MdiqzSczKRYYyJGMi8pm+vvg1ASggK2jYgGSFBADegkc9V6EM6mMXn4ffBmANMawvgeKAJ2hEgwGMTIyAp/Ph7u7O+zv72NjY0PdIxnKWRiSBb9tAAw+MTGh3TY1NYE/gllcXNR8dhobG1FZWYnLy0u8v7+bZLaXgDMnvb6+Ynl5GUdHR2rc09OD1lbzh/X4+DimpqZQU1OjdP79sw2AMyXF43HEYjFsbW1pv+3t7bpfqOOR43Ce7VutkOHT05NKK9POgH19fdqEtaOjowOhUEjxjOIWjUbx8vKC6+trbG9vK9m3SCTyXXpBbV1kx+v1IhAIoKKiAoODg2hpaeGnN1j7j4+PVT0Jh8Pw+/0KKN02NzerMXWYNZLcBZ4ZOY9RMf6bU8Uu/Le2tobq6mp0dXWpXc/rWiajDG9vb3F4eIiFhQU1HhsbUxt0aWkJj4+PYPYM8vClIq+jUPrRUPTT7Pn5GXRIYvVkEM6MdHFxoeqKUVuoSzo5OcH9/b3qG3/qGKafSz8MZr7WqB1M/9DQEFOodj3XnXRwcICzM/MTMJFIKD0WOSvZvgd4pPr7+03+9vb2sLq6auJxwGOai2wD4Kx49HixsHJeXV2pI5krUC7+pwBwI36WSr6IZKOxnjtC9FUyAIm86Uj0v042SwbAe0OQJz8Lgj7oq2QAcmRPxXBAHPxiCksFQhva0gd9/QFliFiu8Gk7TgAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" readonly>
+        <input class="form-control text-field add-comment-input" type="text" id="phone_number_3" autocomplete="off" style="background-color: lightgrey; background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAkCAYAAADo6zjiAAAAAXNSR0IArs4c6QAAA11JREFUWAndVzlLY1EU/pKJioiiiYoxgoIguMQoUyg2CTbBTrCcUvAHWFgJNlbzM6wGQQQLO3VEEEtTuRSKiMaFxA0R18z57uRd5r3szxeEOZDce8/63XOX864LQvPz84G3t7ef0o2kUqlW8pwil8t1Lr5+ezyemdnZ2TOrX1c6eEwC+6xCJ8cCJCEgQlYQbs683ME5EcZIZ9k0L7eMIiZOeQcZsdxOr3k+/NliMQNfSv83gO7ubkxPT4NtLiprBnp7e1FXVwe2uaisAOTsq7hGmw1EWQFkC2jlmQBUVVWhs7MTDQ0NVj3YlWU4sjA8xri+vh6Tk5Oora3Fx8cHVlZWsLu7q8R2ZYbvfK3OwPDwsApOZbfbjdHRUW1nV6Yd5OloAHl0yirSAHZ2dvDw8KCCcQnW19d1YLsy7SBPxzU3N5cy5NxobW1tSCaTuLm5MdiqzSczKRYYyJGMi8pm+vvg1ASggK2jYgGSFBADegkc9V6EM6mMXn4ffBmANMawvgeKAJ2hEgwGMTIyAp/Ph7u7O+zv72NjY0PdIxnKWRiSBb9tAAw+MTGh3TY1NYE/gllcXNR8dhobG1FZWYnLy0u8v7+bZLaXgDMnvb6+Ynl5GUdHR2rc09OD1lbzh/X4+DimpqZQU1OjdP79sw2AMyXF43HEYjFsbW1pv+3t7bpfqOOR43Ce7VutkOHT05NKK9POgH19fdqEtaOjowOhUEjxjOIWjUbx8vKC6+trbG9vK9m3SCTyXXpBbV1kx+v1IhAIoKKiAoODg2hpaeGnN1j7j4+PVT0Jh8Pw+/0KKN02NzerMXWYNZLcBZ4ZOY9RMf6bU8Uu/Le2tobq6mp0dXWpXc/rWiajDG9vb3F4eIiFhQU1HhsbUxt0aWkJj4+PYPYM8vClIq+jUPrRUPTT7Pn5GXRIYvVkEM6MdHFxoeqKUVuoSzo5OcH9/b3qG3/qGKafSz8MZr7WqB1M/9DQEFOodj3XnXRwcICzM/MTMJFIKD0WOSvZvgd4pPr7+03+9vb2sLq6auJxwGOai2wD4Kx49HixsHJeXV2pI5krUC7+pwBwI36WSr6IZKOxnjtC9FUyAIm86Uj0v042SwbAe0OQJz8Lgj7oq2QAcmRPxXBAHPxiCksFQhva0gd9/QFliFiu8Gk7TgAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" readonly>
         <button id="changeNumber" class="btn btn-default" type="button">Change Number</button>
     </div>
 	<div class="form-group form-input-row">
 		<div class="form-input-column input-column-left">
-			<label class="">Monitoring Frequency</label><div class="select-wrap">
+			<label class="required">Monitoring Frequency</label><div class="select-wrap">
 				<select class="select-box form-control priority-select" id="increments" >
-					<option value="0">&nbsp;</option>
-					<option value="1">Every 5000</option>
-					<option value="2">Every 10000</option>
+                    <option value="20">Every 20</option>
+					<option value="5000">Every 5000</option>
+					<option value="1000">Every 10000</option>
 					<option value="3">When it's my turn</option>
 				</select>
 			</div>
@@ -308,8 +327,9 @@ input:focus {
     <br>
 
     <div class="form-input-column">
-        <button type="button" class="btn btn-primary" id="start">Start Monitoring</button>
-        <button type="button" class="btn btn-primary" id="stop">Stop Monitoring</button>
+        <button type="button" class="btn btn-primary-green" background-color: limegreen; id="start">Start Monitoring</button>
+        <button type="button" class="btn btn-primary-red" background-color: red; id="stop">Stop Monitoring</button>
+        <label class="required" id="numInLine"></label>
     </div>
 </div>
 
