@@ -13,13 +13,19 @@ function stop() {
     running = 1;
 }
 
+function start() {
+    chrome.storage.sync.set({"monitor": 'true'}, function() {
+    });
+    running = 0;
+}
+
 function sendSMS(phone_number) {
-    console.log(phone_number)
     var currentNumber = 10000000;
     var prevNumber = currentNumber;
     var increase = 0;
-    console.log(tabId);
+    var lastUpdated = "Just Now"
     var inst = setInterval(function() {
+        console.log("monitoring");
         chrome.storage.sync.get('increment', function(data) {
             increase = data.increment;
         });
@@ -27,14 +33,17 @@ function sendSMS(phone_number) {
 
         chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
             chrome.tabs.sendMessage(tabId, {method: "getNumber"}, function(response) {
+                console.log(response);
                 currentNumber = response.current;
                 lastUpdated = response.lastUp;
             });
         });
-        console.log("Difference " + (prevNumber - currentNumber));
-        console.log("Increase " + increase);
-
-        if (running == 0 && prevNumber - currentNumber >= increase) {
+        if(running == 1) {
+            clearInterval(inst);
+            return;
+        }
+        if (prevNumber - currentNumber >= 20) {
+            console.log("it is monitoring");
             console.log("Current Number " + currentNumber);
             var bodyVal = "{\"phone_number\" : \"" + phone_number + "\",\"numberInLine\" : \"" + currentNumber + "\", \"lastUpdated\" : \"" + lastUpdated + "\"}"
             const req = new XMLHttpRequest();

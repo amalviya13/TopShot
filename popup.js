@@ -164,6 +164,11 @@ function startScripts() {
         } else {
             chrome.storage.sync.set({"monitor": 'true'}, function() {
             });
+
+            var bgPage = chrome.extension.getBackgroundPage();
+            bgPage.start();
+            running = 1;
+
             document.getElementById("start").style.display = "none";
             document.getElementById("stop").style.display = "block";
             bgPage.sendSMS(data.phone_number);

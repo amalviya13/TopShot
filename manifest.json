@@ -9,14 +9,13 @@
     "tabs", 
     "storage",
     "https://nbatopshot.com/*",
-    "http://localhost/*", 
     "https://app.mytopshotnow.com/*",
     "https://queue.nbatopshot.com/*"
   ],
 
   "content_scripts": [{
     "js": ["contentscript.js"],
-    "matches": [ "https://nbatopshot.com/*", "http://localhost/*", "https://app.mytopshotnow.com/*","https://queue.nbatopshot.com/*"]
+    "matches": [ "https://nbatopshot.com/*", "https://app.mytopshotnow.com/*","https://queue.nbatopshot.com/*"]
   }],
 
   "externally_connectable": {
