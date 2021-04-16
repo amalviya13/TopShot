@@ -5,17 +5,15 @@
   "version": "0.1.0",
 
   "permissions": [
-    "activeTab",
     "tabs", 
     "storage",
-    "https://nbatopshot.com/*",
     "https://app.mytopshotnow.com/*",
     "https://queue.nbatopshot.com/*"
   ],
 
   "content_scripts": [{
     "js": ["contentscript.js"],
-    "matches": [ "https://nbatopshot.com/*", "https://app.mytopshotnow.com/*","https://queue.nbatopshot.com/*"]
+    "matches": ["https://app.mytopshotnow.com/*","https://queue.nbatopshot.com/*"]
   }],
 
   "externally_connectable": {

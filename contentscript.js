@@ -3,8 +3,15 @@ chrome.runtime.onMessage.addListener(
         if (request.method == "getNumber") {
             var currentNumber = document.getElementById("1MainPart_lbUsersInLineAheadOfYou").innerText;
             var lastUpdated = document.getElementById("MainPart_lbLastUpdateTimeText").innerText;
-            console.log(currentNumber);
-            sendResponse({current: currentNumber, lastUp : lastUpdated})
+            var purchase = 0;
+            if(document.getElementById("first-in-line").style.display !== 'none') {
+                purchase = 1;
+            }
+            var packsRunOut = 0;
+            if(document.getElementById('lbHeaderH2').innerText === 'The Drop Has Ended') {
+                packsRunOut = 1;
+            }
+            sendResponse({current: currentNumber, lastUp : lastUpdated, done : purchase, dropStatus : packsRunOut})
             return true;
         }
         return true;
