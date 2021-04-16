@@ -1,3 +1,14 @@
+chrome.storage.sync.get('monitor', function(data) {
+    if (typeof data.monitor === 'true') {
+        document.getElementById("stop").style.display = "block";
+        document.getElementById("start").style.display = "none";
+    }
+    else if(typeof data.monitor === 'undefined' || typeof data.monitor === 'false'){
+        document.getElementById("stop").style.display = "none";
+        document.getElementById("start").style.display = "block";
+    }
+});
+
 chrome.storage.sync.get('phone_number', function(data) {
     if (typeof data.phone_number === 'undefined') {
         document.getElementById("secondDiv").style.display = "none";
@@ -12,20 +23,9 @@ chrome.storage.sync.get('phone_number', function(data) {
     }
 });
 
-chrome.storage.sync.get('monitor', function(data) {
-    console.log(data.monitor);
-    if (typeof data.monitor === 'true') {
-        document.getElementById("stop").style.display = "block";
-        document.getElementById("start").style.display = "none";
-    }
-    else {
-        document.getElementById("stop").style.display = "none";
-        document.getElementById("start").style.display = "block";
-    }
-});
 
 
-chrome.storage.sync.set({"increment": 200}, function() {
+chrome.storage.sync.set({"increment": 2000}, function() {
 });
 
 var currentNumber = 10000000;
@@ -60,6 +60,8 @@ function goThirdDiv() {
 }
 
 function stop() {
+    chrome.storage.sync.set({"monitor": 'false'}, function() {
+    });
     var bgPage = chrome.extension.getBackgroundPage();
     bgPage.stop();
     running = 1;
