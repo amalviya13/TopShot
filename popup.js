@@ -1,9 +1,13 @@
 chrome.storage.sync.get('monitor', function(data) {
-    if (typeof data.monitor === 'true') {
+    console.log(' monitor is ' + data.monitor);
+    document.getElementById("stop").style.display = "none";
+    document.getElementById("start").style.display = "none";
+
+    if (typeof data.monitor != undefined && data.monitor == 1) {
         document.getElementById("stop").style.display = "block";
         document.getElementById("start").style.display = "none";
     }
-    else if(typeof data.monitor === 'undefined' || typeof data.monitor === 'false'){
+    else {
         document.getElementById("stop").style.display = "none";
         document.getElementById("start").style.display = "block";
     }
@@ -22,8 +26,6 @@ chrome.storage.sync.get('phone_number', function(data) {
         document.getElementById("phone_number_3").value = data.phone_number;
     }
 });
-
-
 
 chrome.storage.sync.set({"increment": 2000}, function() {
 });
@@ -60,7 +62,7 @@ function goThirdDiv() {
 }
 
 function stop() {
-    chrome.storage.sync.set({"monitor": 'false'}, function() {
+    chrome.storage.sync.set({"monitor": 0}, function() {
     });
     var bgPage = chrome.extension.getBackgroundPage();
     bgPage.stop();
@@ -164,7 +166,7 @@ function startScripts() {
                 });
             }
         } else {
-            chrome.storage.sync.set({"monitor": 'true'}, function() {
+            chrome.storage.sync.set({"monitor": 1}, function() {
             });
 
             var bgPage = chrome.extension.getBackgroundPage();

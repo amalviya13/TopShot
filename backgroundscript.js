@@ -8,13 +8,13 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
 });
 
 function stop() {
-    chrome.storage.sync.set({"monitor": 'false'}, function() {
+    chrome.storage.sync.set({"monitor": 0}, function() {
     });
     running = 1;
 }
 
 function start() {
-    chrome.storage.sync.set({"monitor": 'true'}, function() {
+    chrome.storage.sync.set({"monitor": 1}, function() {
     });
     running = 0;
 }
