@@ -7,6 +7,13 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
     }
 });
 
+chrome.tabs.onRemoved.addListener(function(tabid, removeInfo) {
+    if(tabid == tabId) {
+        console.log("closed tab");
+        stop();
+    }
+});
+
 function stop() {
     chrome.storage.sync.set({"monitor": 0}, function() {
     });
@@ -20,6 +27,7 @@ function start() {
 }
 
 function sendSMS(phone_number) {
+    console.log("hello");
     var currentNumber = 10000000;
     var timeToPurchase = 0;
     var prevNumber = currentNumber;
@@ -58,6 +66,7 @@ function sendSMS(phone_number) {
             }).then(function(response) {
 
             });
+            stop();
             clearInterval(inst);
             return;
         }
@@ -76,6 +85,7 @@ function sendSMS(phone_number) {
             }).then(function(response) {
 
             });
+            stop();
             clearInterval(inst);
             return;
         }
