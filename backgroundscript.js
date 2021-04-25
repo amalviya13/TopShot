@@ -27,7 +27,6 @@ function start() {
 }
 
 function sendSMS(phone_number) {
-    console.log("hello");
     var currentNumber = 10000000;
     var timeToPurchase = 0;
     var prevNumber = currentNumber;
@@ -88,8 +87,7 @@ function sendSMS(phone_number) {
             stop();
             clearInterval(inst);
             return;
-        }
-
+        }   
         if (increase !== -1 && (prevNumber - currentNumber >= increase)) {
             var bodyVal = "{\"phone_number\" : \"" + phone_number + "\",\"numberInLine\" : \"" + currentNumber + "\", \"lastUpdated\" : \"" + lastUpdated + "\"}"
             const req = new XMLHttpRequest();
